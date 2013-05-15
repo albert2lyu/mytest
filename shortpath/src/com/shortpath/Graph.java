@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.ListIterator;
 
-//ÀàGraph
-//Ê¹ÓÃ¶şÎ¬Êı×é´æ´¢¼ÓÈ¨ÎŞÏòÍ¼µÄ¸÷±ßÈ¨Öµ,¼´Ä³Ğ©Â·¾¶ĞÅÏ¢
+//ç±»Graph
+//ä½¿ç”¨äºŒç»´æ•°ç»„å­˜å‚¨åŠ æƒæ— å‘å›¾çš„å„è¾¹æƒå€¼,å³æŸäº›è·¯å¾„ä¿¡æ¯
 public class Graph {
 
-	public static final double NoEdge = Double.MAX_VALUE;// ³£Á¿:Á½µã¼äÃ»ÓĞ±ß
-	private double[][] a;// ´æ´¢¸÷±ß¼äÈ¨Öµ
-	private int n;// ¶¥µãÊı
-	private int e;// ±ßÊı
-	private int max;// Êı×éµÄ×î´óÈİÁ¿
+	public static final double NoEdge = Double.MAX_VALUE;// å¸¸é‡:ä¸¤ç‚¹é—´æ²¡æœ‰è¾¹
+	private double[][] a;// å­˜å‚¨å„è¾¹é—´æƒå€¼
+	private int n;// é¡¶ç‚¹æ•°
+	private int e;// è¾¹æ•°
+	private int max;// æ•°ç»„çš„æœ€å¤§å®¹é‡
 
-	// ¹¹Ôìº¯Êı
+	// æ„é€ å‡½æ•°
 	public Graph() {
 		n = 5;
 		e = 7;
@@ -27,66 +27,66 @@ public class Graph {
 							{ 0, 8, 5, NoEdge, 3, NoEdge } };
 	}
 
-	// ÈôÖ¸¶¨Á½¶¥µã¼ä´æÔÚ±ß,·µ»Øture,·ñÔò·µ»Øfalse
+	// è‹¥æŒ‡å®šä¸¤é¡¶ç‚¹é—´å­˜åœ¨è¾¹,è¿”å›ture,å¦åˆ™è¿”å›false
 	public boolean exsit(int i, int j) {
 		if (a[i][j] == NoEdge)
 			return false;
 		return true;
 	}
 
-	// ·µ»ØÍ¼ÖĞ±ßÊı
+	// è¿”å›å›¾ä¸­è¾¹æ•°
 	public int Edge() {
 		return e;
 	}
 
-	// ·µ»ØÍ¾ÖĞ¶¥µãÊı
+	// è¿”å›é€”ä¸­é¡¶ç‚¹æ•°
 	public int Vertices() {
 		return n;
 	}
 
-	// ÏòÍ¼ÖĞÌí¼Ó±ßi-j,³¤¶ÈÎªw
+	// å‘å›¾ä¸­æ·»åŠ è¾¹i-j,é•¿åº¦ä¸ºw
 	public Graph add(int i, int j, double w) {
 		a[i][j] = a[j][i] = w;
 		e++;
 		return this;
 	}
 
-	// É¾³ı±ßi-j
+	// åˆ é™¤è¾¹i-j
 	public Graph delete(int i, int j) {
 		a[i][j] = a[j][i] = NoEdge;
 		e--;
 		return this;
 	}
 
-	// À©³äÊı×éµÄ×î´óÈİÁ¿,Ã¿´ÎÈİÁ¿¼Ó2
+	// æ‰©å……æ•°ç»„çš„æœ€å¤§å®¹é‡,æ¯æ¬¡å®¹é‡åŠ 2
 	public void resize() {
 		double[][] b = new double[max + 2][max + 2];
 		max = max + 2;
 		for (int i = 1; i <= n; i++)
-			// °ÑaÖĞÒÑÓĞÄÚÈİ¸´ÖÆµ½b
+			// æŠŠaä¸­å·²æœ‰å†…å®¹å¤åˆ¶åˆ°b
 			for (int j = 1; j <= n; j++)
 				b[i][j] = a[i][j];
 		for (int i = n + 1; i < max; i++)
-			// bÖĞÆäÓàÉèÎªNoEdge
+			// bä¸­å…¶ä½™è®¾ä¸ºNoEdge
 			for (int j = 1; j < max; j++)
 				b[i][j] = NoEdge;
 		for (int j = n + 1; j < max; j++)
 			for (int i = 1; i < max; i++)
 				b[i][j] = NoEdge;
-		a = b;// Êı×éaÈİÁ¿¼Ó2
+		a = b;// æ•°ç»„aå®¹é‡åŠ 2
 	}
 
-	// ÏòÍ¼ÖĞÌí¼Ó¶¥µã
+	// å‘å›¾ä¸­æ·»åŠ é¡¶ç‚¹
 	public void addPoint() {
-		if (n == max - 1)// ÈôÒÔ´ïµ½×î´óÈİÁ¿,resizeÊı×éa
+		if (n == max - 1)// è‹¥ä»¥è¾¾åˆ°æœ€å¤§å®¹é‡,resizeæ•°ç»„a
 			resize();
 		n++;
 	}
 
-	// É¾³ıÖ¸¶¨¶¥µã
+	// åˆ é™¤æŒ‡å®šé¡¶ç‚¹
 	public Graph deletePoint(int v) {
 
-		// ½«Î»ÖÃÎ»ÓÚÒªÉ¾³ı¶¥µãÒÔºóµÄÆäËü¶¥µãµÄ±ßµÄÏà¹ØĞÅÏ¢Ç°ÒÆ
+		// å°†ä½ç½®ä½äºè¦åˆ é™¤é¡¶ç‚¹ä»¥åçš„å…¶å®ƒé¡¶ç‚¹çš„è¾¹çš„ç›¸å…³ä¿¡æ¯å‰ç§»
 		for (int i = v; i < n; i++)
 			for (int j = 1; j <= n; j++)
 				a[i][j] = a[i + 1][j];
@@ -94,16 +94,16 @@ public class Graph {
 			for (int i = 1; i <= n; i++)
 				a[i][j] = a[i][j + 1];
 
-		// ¿Õ³öµÄÎ»ÖÃÉèÎª³õÊ¼ÖµNoEdge
+		// ç©ºå‡ºçš„ä½ç½®è®¾ä¸ºåˆå§‹å€¼NoEdge
 		for (int j = 1; j <= n; j++)
 			a[n][j] = NoEdge;
 		for (int i = 1; i <= n; i++)
 			a[i][n] = NoEdge;
-		n--;// ¶¥µãÊı¼õÒ»
+		n--;// é¡¶ç‚¹æ•°å‡ä¸€
 		return this;
 	}
 
-	// ½«Óë¶¥µãv´æÔÚÂ·¾¶µÄµã·µ»Øµ½ÁĞ±ípÖĞ
+	// å°†ä¸é¡¶ç‚¹vå­˜åœ¨è·¯å¾„çš„ç‚¹è¿”å›åˆ°åˆ—è¡¨pä¸­
 	public void getLine(int v, ArrayList<Integer> p) {
 		for (int i = 1; i <= n; i++)
 			if (a[v][i] != NoEdge)
@@ -111,12 +111,12 @@ public class Graph {
 
 	}
 
-	// »ñÈ¡¶¥µãsµ½ÆäËü¶¥µãµÄ×î¶ÌÂ·¾¶,dÎªÂ·¾¶³¤¶È,pÎªÇ°¼Ì¶¥µã
+	// è·å–é¡¶ç‚¹såˆ°å…¶å®ƒé¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„,dä¸ºè·¯å¾„é•¿åº¦,pä¸ºå‰ç»§é¡¶ç‚¹
 	public void ShortestPaths(int s, double[] d, int[] p) {
-		LinkedList<Integer> L = new LinkedList<Integer>();// Á´±íLÓÃÓÚ´æ´¢¿Éµ½´ïµÄËùÓĞ¶¥µã
-		ListIterator<Integer> l;// LµÄ±éÀúÆ÷
+		LinkedList<Integer> L = new LinkedList<Integer>();// é“¾è¡¨Lç”¨äºå­˜å‚¨å¯åˆ°è¾¾çš„æ‰€æœ‰é¡¶ç‚¹
+		ListIterator<Integer> l;// Lçš„éå†å™¨
 
-		// ³õÊ¼»¯d,p,L
+		// åˆå§‹åŒ–d,p,L
 		for (int i = 1; i <= n; i++) {
 			d[i] = a[s][i];
 			if (d[i] == NoEdge)
@@ -127,9 +127,9 @@ public class Graph {
 			}
 		}
 
-		// ¸üĞÂd,p
-		while (!L.isEmpty()) {// Ñ°ÕÒ¾ßÓĞ×îĞ¡dµÄ¶¥µãv
-			l = L.listIterator();// ±éÀúÆ÷³õÊ¼»¯
+		// æ›´æ–°d,p
+		while (!L.isEmpty()) {// å¯»æ‰¾å…·æœ‰æœ€å°dçš„é¡¶ç‚¹v
+			l = L.listIterator();// éå†å™¨åˆå§‹åŒ–
 			int v = l.next().intValue();
 			while (l.hasNext()) {
 				int w = l.next().intValue();
@@ -137,14 +137,14 @@ public class Graph {
 					v = w;
 			}
 
-			// ´ÓLÖĞÉ¾³ıÍ¨Ïò¶¥µãvµÄÏÂÒ»¸ö×îµãÂ·¾¶²¢¸üĞÂd
+			// ä»Lä¸­åˆ é™¤é€šå‘é¡¶ç‚¹vçš„ä¸‹ä¸€ä¸ªæœ€ç‚¹è·¯å¾„å¹¶æ›´æ–°d
 			int i = v;
 			L.remove(new Integer(v));
 			for (int j = 1; j <= n; j++) {
-				if (a[i][j] != NoEdge && (p[j] == 0 || d[j] > d[i] + a[i][j])) {// vÓëjÎŞÖ±´ïÂ·¾¶»òÍ¾¾¶¶¥µãi¿ÎËõ¶ÌÂ·¾¶
-					d[j] = d[i] + a[i][j];// ¸üĞÂd
+				if (a[i][j] != NoEdge && (p[j] == 0 || d[j] > d[i] + a[i][j])) {// vä¸jæ— ç›´è¾¾è·¯å¾„æˆ–é€”å¾„é¡¶ç‚¹iè¯¾ç¼©çŸ­è·¯å¾„
+					d[j] = d[i] + a[i][j];// æ›´æ–°d
 					if (p[j] == 0)
-						L.add(0, new Integer(j));// ÈôjÓÉ²»¿ÉÖ±´ïµ½¿É´ïµ½,¼ÓÈëÁ´±íL
+						L.add(0, new Integer(j));// è‹¥jç”±ä¸å¯ç›´è¾¾åˆ°å¯è¾¾åˆ°,åŠ å…¥é“¾è¡¨L
 					p[j] = i;
 				}
 			}

@@ -1,12 +1,12 @@
 /*
-  Ö÷ÒªÊµÏÖ²éÕÒÈÎÒâÁ½µØµã¼ä×î¶ÌÂ·¾¶²¢»ñµÃÆä³¤¶È£¬Ìí¼ÓµØµã£¬É¾³ıµØµã£¬Ìí¼ÓÂ·Ïß£¬É¾³ıÂ·Ïß²Ù×÷
-  ¸ÃÏµÍ³´øÓĞÄ£ÄâµØÍ¼µÄ¼ÓÈ¨ÎŞÏòÍ¼£¬Ö±¹ÛµÄ±íÏÖ¸÷µØµã¼äµÄ¹ØÏµ¼°Ëù×ö²Ù×÷µÄÏìÓ¦½á¹û
-  ¿ÉÍ¨¹ıÊó±ê²Ù×÷»òÎÄ±¾ÊäÈëµÄĞÎÊ½ÊäÈëÏà¹ØĞÅÏ¢
-  ¸ÃÏµÍ³»¹¿É»ñÈ¡µ±Ç°Ê±¼ä£¬°ïÖúĞÅÏ¢,²Ëµ¥À¸Ñ¡ÏîÉèÓĞÈÈ¼ü
+  ä¸»è¦å®ç°æŸ¥æ‰¾ä»»æ„ä¸¤åœ°ç‚¹é—´æœ€çŸ­è·¯å¾„å¹¶è·å¾—å…¶é•¿åº¦ï¼Œæ·»åŠ åœ°ç‚¹ï¼Œåˆ é™¤åœ°ç‚¹ï¼Œæ·»åŠ è·¯çº¿ï¼Œåˆ é™¤è·¯çº¿æ“ä½œ
+  è¯¥ç³»ç»Ÿå¸¦æœ‰æ¨¡æ‹Ÿåœ°å›¾çš„åŠ æƒæ— å‘å›¾ï¼Œç›´è§‚çš„è¡¨ç°å„åœ°ç‚¹é—´çš„å…³ç³»åŠæ‰€åšæ“ä½œçš„å“åº”ç»“æœ
+  å¯é€šè¿‡é¼ æ ‡æ“ä½œæˆ–æ–‡æœ¬è¾“å…¥çš„å½¢å¼è¾“å…¥ç›¸å…³ä¿¡æ¯
+  è¯¥ç³»ç»Ÿè¿˜å¯è·å–å½“å‰æ—¶é—´ï¼Œå¸®åŠ©ä¿¡æ¯,èœå•æ é€‰é¡¹è®¾æœ‰çƒ­é”®
   
-  »ñµÃ×î¶ÌÂ·¾¶µÄÖ÷ÒªË¼Ïë:Ì°À·Ëã·¨
-  Êı¾İ½á¹¹: ¶şÎ¬Êı×é´æ´¢¼ÓÈ¨ÎŞÏòÍ¼
-          ArrayList´æ´¢µØµã£¬Â·¾¶µÄÏà¹ØĞÅÏ¢
+  è·å¾—æœ€çŸ­è·¯å¾„çš„ä¸»è¦æ€æƒ³:è´ªå©ªç®—æ³•
+  æ•°æ®ç»“æ„: äºŒç»´æ•°ç»„å­˜å‚¨åŠ æƒæ— å‘å›¾
+          ArrayListå­˜å‚¨åœ°ç‚¹ï¼Œè·¯å¾„çš„ç›¸å…³ä¿¡æ¯
  */
 package com.shortpath;
 
@@ -49,8 +49,8 @@ import org.dom4j.VisitorSupport;
 import org.dom4j.io.SAXReader;
 import org.dom4j.io.XMLWriter;
 
-//ÀàShortPath
-//GUIµÄÉèÖÃ,¼°buttonµÄÏìÓ¦
+//ç±»ShortPath
+//GUIçš„è®¾ç½®,åŠbuttonçš„å“åº”
 public class ShortPath extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 351859015672182830L;
@@ -63,7 +63,7 @@ public class ShortPath extends JFrame implements ActionListener {
 	Path p = new Path();
 	ArrayList<Place> a = new ArrayList<Place>();
 
-	// ÎÄ±¾Çø
+	// æ–‡æœ¬åŒº
 	private JTextField sf;
 	private JTextField ef;
 	private JTextField text;
@@ -78,10 +78,10 @@ public class ShortPath extends JFrame implements ActionListener {
 	private DrawPanel dPanel;
 
 	public ShortPath() {
-		setTitle("GPSÏµÍ³");
+		setTitle("GPSç³»ç»Ÿ");
 		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 		setBounds(screenSize.width / 2 - (WIDTH / 2), screenSize.height / 2
-				- (HEIGHT / 2), WIDTH, HEIGHT);// ÉèÖÃ´°¿ÚÓÚÆÁÄ»ÖĞÑëÏÔÊ¾
+				- (HEIGHT / 2), WIDTH, HEIGHT);// è®¾ç½®çª—å£äºå±å¹•ä¸­å¤®æ˜¾ç¤º
 		Container content = getContentPane();
 		setSize(WIDTH, HEIGHT);
 		setVisible(true);
@@ -91,31 +91,31 @@ public class ShortPath extends JFrame implements ActionListener {
 		content.add(f, BorderLayout.CENTER);
 		f.setLayout(new BorderLayout());
 
-		JMenuBar menubar = new JMenuBar();// ²Ëµ¥À¸
+		JMenuBar menubar = new JMenuBar();// èœå•æ 
 		f.add(menubar, BorderLayout.NORTH);
-		JMenu operate = new JMenu("µØÍ¼(O)");
-		JMenu help = new JMenu("°ïÖú(H)");
-		JMenu system = new JMenu("ÏµÍ³(S)");
+		JMenu operate = new JMenu("åœ°å›¾(O)");
+		JMenu help = new JMenu("å¸®åŠ©(H)");
+		JMenu system = new JMenu("ç³»ç»Ÿ(S)");
 		menubar.add(operate);
 		menubar.add(help);
 		menubar.add(system);
-		operate.setMnemonic(KeyEvent.VK_O);// Ìí¼ÓÈÈ¼ü
-		help.setMnemonic(KeyEvent.VK_H);// Ìí¼ÓÈÈ¼ü
+		operate.setMnemonic(KeyEvent.VK_O);// æ·»åŠ çƒ­é”®
+		help.setMnemonic(KeyEvent.VK_H);// æ·»åŠ çƒ­é”®
 		system.setMnemonic(KeyEvent.VK_S);
 
-		JMenuItem o1 = new JMenuItem("µ¼ÈëµØÍ¼Êı¾İ");
-		JMenuItem o2 = new JMenuItem("µ¼³öµØÍ¼Êı¾İ");
+		JMenuItem o1 = new JMenuItem("å¯¼å…¥åœ°å›¾æ•°æ®");
+		JMenuItem o2 = new JMenuItem("å¯¼å‡ºåœ°å›¾æ•°æ®");
 		operate.add(o1);
 		operate.add(o2);
 
-		JMenuItem time = new JMenuItem("ÏµÍ³Ê±¼ä");
+		JMenuItem time = new JMenuItem("ç³»ç»Ÿæ—¶é—´");
 		system.add(time);
 
-		JMenuItem h1 = new JMenuItem("×îÓÅÂ·Ïß²éÑ¯£¿");
-		JMenuItem h2 = new JMenuItem("É¾³ıµØµã£¿");
-		JMenuItem h3 = new JMenuItem("Ìí¼ÓµØµã£¿");
-		JMenuItem h4 = new JMenuItem("É¾³ıÂ·Ïß£¿");
-		JMenuItem h5 = new JMenuItem("Ìí¼ÓÂ·Ïß?");
+		JMenuItem h1 = new JMenuItem("æœ€ä¼˜è·¯çº¿æŸ¥è¯¢ï¼Ÿ");
+		JMenuItem h2 = new JMenuItem("åˆ é™¤åœ°ç‚¹ï¼Ÿ");
+		JMenuItem h3 = new JMenuItem("æ·»åŠ åœ°ç‚¹ï¼Ÿ");
+		JMenuItem h4 = new JMenuItem("åˆ é™¤è·¯çº¿ï¼Ÿ");
+		JMenuItem h5 = new JMenuItem("æ·»åŠ è·¯çº¿?");
 		help.add(h1);
 		help.add(h2);
 		help.add(h3);
@@ -134,15 +134,15 @@ public class ShortPath extends JFrame implements ActionListener {
 		panel.add(dPanel, BorderLayout.CENTER);
 		panel.add(tpanel, BorderLayout.SOUTH);
 
-		// ÉèÖÃ±ß¿ò
+		// è®¾ç½®è¾¹æ¡†
 		dPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory
-				.createLineBorder(Color.BLUE), "µØÍ¼", TitledBorder.CENTER,
-				TitledBorder.DEFAULT_POSITION, new Font("ËÎÌå", Font.BOLD, 18),
+				.createLineBorder(Color.BLUE), "åœ°å›¾", TitledBorder.CENTER,
+				TitledBorder.DEFAULT_POSITION, new Font("å®‹ä½“", Font.BOLD, 18),
 				Color.BLUE));
 
 		tpanel.setBorder(BorderFactory.createTitledBorder(BorderFactory
-				.createLineBorder(Color.BLUE), "×îÓÅÂ·Ïß", TitledBorder.CENTER,
-				TitledBorder.DEFAULT_POSITION, new Font("ËÎÌå", Font.BOLD, 15),
+				.createLineBorder(Color.BLUE), "æœ€ä¼˜è·¯çº¿", TitledBorder.CENTER,
+				TitledBorder.DEFAULT_POSITION, new Font("å®‹ä½“", Font.BOLD, 15),
 				Color.BLACK));
 		tpanel.setLayout(new GridLayout(2, 1));
 		JPanel panelt1 = new JPanel();
@@ -151,8 +151,8 @@ public class ShortPath extends JFrame implements ActionListener {
 		tpanel.add(panelt2);
 		text = new JTextField(30);
 		dis = new JTextField(30);
-		JLabel z = new JLabel("×îÓÅÂ·Ïß");
-		JLabel l = new JLabel("Â·Ïß³¤¶È(km)");
+		JLabel z = new JLabel("æœ€ä¼˜è·¯çº¿");
+		JLabel l = new JLabel("è·¯çº¿é•¿åº¦(km)");
 		JLabel k = new JLabel("       ");
 		panelt1.add(z);
 		panelt1.add(k);
@@ -166,7 +166,7 @@ public class ShortPath extends JFrame implements ActionListener {
 		JPanel panel1 = new JPanel();
 		bPanel.add(panel1);
 		panel1.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.BLUE), "×îÓÅÂ·Ïß²éÑ¯"));
+				BorderFactory.createLineBorder(Color.BLUE), "æœ€ä¼˜è·¯çº¿æŸ¥è¯¢"));
 		panel1.setLayout(new GridLayout(4, 1));
 		JPanel panel11 = new JPanel();
 		JPanel panel12 = new JPanel();
@@ -176,13 +176,13 @@ public class ShortPath extends JFrame implements ActionListener {
 		panel1.add(panel12);
 		panel1.add(panel13);
 		panel1.add(panel14);
-		JLabel s = new JLabel("ÆğÊ¼");
-		JLabel e = new JLabel("ÖÕÖ¹");
-		JLabel j = new JLabel("        ¡ı");
+		JLabel s = new JLabel("èµ·å§‹");
+		JLabel e = new JLabel("ç»ˆæ­¢");
+		JLabel j = new JLabel("        â†“");
 		JLabel empty = new JLabel("        ");
 		sf = new JTextField(10);
 		ef = new JTextField(10);
-		JButton q = new JButton("È·¶¨");
+		JButton q = new JButton("ç¡®å®š");
 		q.setPreferredSize(new Dimension(60, 23));
 		panel11.add(s);
 		panel11.add(sf);
@@ -199,15 +199,15 @@ public class ShortPath extends JFrame implements ActionListener {
 		JPanel panel5 = new JPanel();
 		panel4.add(panel5);
 		panel5.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.BLUE), "É¾³ıµØµã"));
+				BorderFactory.createLineBorder(Color.BLUE), "åˆ é™¤åœ°ç‚¹"));
 		panel5.setLayout(new GridLayout(2, 1));
 		JPanel panel51 = new JPanel();
 		JPanel panel52 = new JPanel();
 		panel5.add(panel51);
 		panel5.add(panel52);
-		JLabel d = new JLabel("µØÃû");
+		JLabel d = new JLabel("åœ°å");
 		delete = new JTextField(10);
-		JButton dc = new JButton("É¾³ı");
+		JButton dc = new JButton("åˆ é™¤");
 		dc.setPreferredSize(new Dimension(60, 20));
 		JLabel empty2 = new JLabel("     ");
 		panel51.add(d);
@@ -218,16 +218,16 @@ public class ShortPath extends JFrame implements ActionListener {
 		JPanel panel6 = new JPanel();
 		panel4.add(panel6);
 		panel6.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.BLUE), "Ìí¼ÓµØµã"));
+				BorderFactory.createLineBorder(Color.BLUE), "æ·»åŠ åœ°ç‚¹"));
 		panel6.setLayout(new GridLayout(2, 1));
 		JPanel panel61 = new JPanel();
 		JPanel panel62 = new JPanel();
 		panel6.add(panel61);
 		panel6.add(panel62);
-		JLabel a = new JLabel("µØÃû");
+		JLabel a = new JLabel("åœ°å");
 		add = new JTextField(10);
-		JButton ac = new JButton("Ìí¼Ó");
-		JButton nac = new JButton("È¡Ïû");
+		JButton ac = new JButton("æ·»åŠ ");
+		JButton nac = new JButton("å–æ¶ˆ");
 		ac.setPreferredSize(new Dimension(60, 20));
 		nac.setPreferredSize(new Dimension(60, 20));
 		JLabel empty3 = new JLabel("    ");
@@ -240,7 +240,7 @@ public class ShortPath extends JFrame implements ActionListener {
 		JPanel panel3 = new JPanel();
 		bPanel.add(panel3);
 		panel3.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.BLUE), "É¾³ıÂ·Ïß"));
+				BorderFactory.createLineBorder(Color.BLUE), "åˆ é™¤è·¯çº¿"));
 		panel3.setLayout(new GridLayout(4, 1));
 		JPanel panel31 = new JPanel();
 		JPanel panel32 = new JPanel();
@@ -250,13 +250,13 @@ public class ShortPath extends JFrame implements ActionListener {
 		panel3.add(panel32);
 		panel3.add(panel33);
 		panel3.add(panel34);
-		JLabel ds = new JLabel("ÆğÊ¼");
-		JLabel de = new JLabel("ÖÕÖ¹");
-		JLabel dj = new JLabel("        ¡ı");
+		JLabel ds = new JLabel("èµ·å§‹");
+		JLabel de = new JLabel("ç»ˆæ­¢");
+		JLabel dj = new JLabel("        â†“");
 		JLabel empty1 = new JLabel("       ");
 		dls = new JTextField(10);
 		dle = new JTextField(10);
-		JButton dl = new JButton("É¾³ıÂ·Ïß");
+		JButton dl = new JButton("åˆ é™¤è·¯çº¿");
 		dl.setPreferredSize(new Dimension(110, 20));
 		panel31.add(ds);
 		panel31.add(dls);
@@ -269,7 +269,7 @@ public class ShortPath extends JFrame implements ActionListener {
 		JPanel panel2 = new JPanel();
 		bPanel.add(panel2);
 		panel2.setBorder(BorderFactory.createTitledBorder(
-				BorderFactory.createLineBorder(Color.BLUE), "Ìí¼ÓÂ·Ïß"));
+				BorderFactory.createLineBorder(Color.BLUE), "æ·»åŠ è·¯çº¿"));
 		panel2.setLayout(new GridLayout(5, 1));
 		JPanel panel21 = new JPanel();
 		JPanel panel22 = new JPanel();
@@ -281,14 +281,14 @@ public class ShortPath extends JFrame implements ActionListener {
 		panel2.add(panel23);
 		panel2.add(panel24);
 		panel2.add(panel25);
-		JLabel as = new JLabel("ÆğÊ¼");
-		JLabel ae = new JLabel("ÖÕÖ¹");
-		JLabel aj = new JLabel("        ¡ı");
-		JLabel aw = new JLabel("Â·³¤(km)");
+		JLabel as = new JLabel("èµ·å§‹");
+		JLabel ae = new JLabel("ç»ˆæ­¢");
+		JLabel aj = new JLabel("        â†“");
+		JLabel aw = new JLabel("è·¯é•¿(km)");
 		als = new JTextField(10);
 		ale = new JTextField(10);
 		weight = new JTextField(7);
-		JButton al = new JButton("Ìí¼ÓÂ·Ïß");
+		JButton al = new JButton("æ·»åŠ è·¯çº¿");
 		JLabel temp = new JLabel("     ");
 		al.setPreferredSize(new Dimension(120, 20));
 		panel21.add(as);
@@ -301,7 +301,7 @@ public class ShortPath extends JFrame implements ActionListener {
 		panel25.add(temp);
 		panel25.add(al);
 
-		// ×¢²á¼àÌı
+		// æ³¨å†Œç›‘å¬
 		q.addActionListener(this);
 		ac.addActionListener(this);
 		nac.addActionListener(this);
@@ -318,18 +318,18 @@ public class ShortPath extends JFrame implements ActionListener {
 		o2.addActionListener(this);
 	}
 
-	// ÏìÓ¦´¦Àí
+	// å“åº”å¤„ç†
 	public void actionPerformed(ActionEvent e) {
-		// ×î¶ÌÂ·Ïß²éÑ¯ÏìÓ¦
-		if (e.getActionCommand().equals("È·¶¨")) {
+		// æœ€çŸ­è·¯çº¿æŸ¥è¯¢å“åº”
+		if (e.getActionCommand().equals("ç¡®å®š")) {
 
-			// ³õÊ¼»¯
+			// åˆå§‹åŒ–
 			String path = null;
 			a.clear();
 			text.setText("");
 			dis.setText("");
 			dPanel.noChange();
-			// Êó±êµã»÷Ìí¼Ó,ÉèÖÃÎÄ±¾Çø
+			// é¼ æ ‡ç‚¹å‡»æ·»åŠ ,è®¾ç½®æ–‡æœ¬åŒº
 			if (dPanel.f.size() >= 1) {
 				String str1 = dPanel.getName(0);
 				sf.setText(str1);
@@ -339,122 +339,122 @@ public class ShortPath extends JFrame implements ActionListener {
 				}
 			}
 
-			double line = p.getPath(sf.getText(), ef.getText(), a, g, l);// »ñµÃ×î¶ÌÂ·¾¶
+			double line = p.getPath(sf.getText(), ef.getText(), a, g, l);// è·å¾—æœ€çŸ­è·¯å¾„
 
-			// ×î¶ÌÂ·¾¶µÄÎÄ±¾Êä³ö
+			// æœ€çŸ­è·¯å¾„çš„æ–‡æœ¬è¾“å‡º
 			if (a.size() != 0) {
 				path = a.get(0).getName();
 				dPanel.paintLine(a.get(0).getPoint());
 			}
 			for (int i = 1; i < a.size(); i++) {
-				path = path + "¡ú" + a.get(i).getName();
+				path = path + "â†’" + a.get(i).getName();
 				dPanel.paintLine(a.get(i).getPoint());
 			}
 			text.setText(path);
 
-			dis.setText(String.valueOf(line));// ×î¶ÌÂ·¾¶³¤¶ÈÎÄ±¾Êä³ö
+			dis.setText(String.valueOf(line));// æœ€çŸ­è·¯å¾„é•¿åº¦æ–‡æœ¬è¾“å‡º
 
-			// ÈôÆğÊ¼ÖÕÖ¹¶¥µã²»Í¬µ«Â·¾¶³¤¶ÈÎª0,Ôò²»´æÔÚÕâÑùµÄÂ·¾¶
+			// è‹¥èµ·å§‹ç»ˆæ­¢é¡¶ç‚¹ä¸åŒä½†è·¯å¾„é•¿åº¦ä¸º0,åˆ™ä¸å­˜åœ¨è¿™æ ·çš„è·¯å¾„
 			if (sf.getText().equalsIgnoreCase(ef.getText()) == false
 					&& line == 0)
-				text.setText(sf.getText() + "¡ú" + ef.getText() + "µÄÂ·Ïß²»´æÔÚ£¡");
+				text.setText(sf.getText() + "â†’" + ef.getText() + "çš„è·¯çº¿ä¸å­˜åœ¨ï¼");
 
-			dPanel.f.clear();// ±êÊ¶µãÇå³ı
+			dPanel.f.clear();// æ ‡è¯†ç‚¹æ¸…é™¤
 
 		}
 
-		// Ìí¼ÓµØµã²Ù×÷
-		else if (e.getActionCommand().equals("Ìí¼Ó")) {
+		// æ·»åŠ åœ°ç‚¹æ“ä½œ
+		else if (e.getActionCommand().equals("æ·»åŠ ")) {
 			addPoint();
 		}
 
-		// È¡ÏûÌí¼Ó
-		else if (e.getActionCommand().equals("È¡Ïû")) {
+		// å–æ¶ˆæ·»åŠ 
+		else if (e.getActionCommand().equals("å–æ¶ˆ")) {
 			dPanel.noChange();
 			if (l.contains(dPanel.str))
-				p.delete(dPanel.str, g, l);// ÔÚ´æ´¢½á¹¹ÖĞÉ¾³ıÖ®Ç°Ìí¼ÓµÄµã
-			dPanel.deletePoint(dPanel.p, dPanel.str);// ÔÚµØÍ¼ÖĞÉ¾³ıÖ®Ç°Ìí¼ÓµÄµã
-			add.setText("");// Çå¿ÕÎÄ±¾Çø
+				p.delete(dPanel.str, g, l);// åœ¨å­˜å‚¨ç»“æ„ä¸­åˆ é™¤ä¹‹å‰æ·»åŠ çš„ç‚¹
+			dPanel.deletePoint(dPanel.p, dPanel.str);// åœ¨åœ°å›¾ä¸­åˆ é™¤ä¹‹å‰æ·»åŠ çš„ç‚¹
+			add.setText("");// æ¸…ç©ºæ–‡æœ¬åŒº
 			dPanel.p = null;
 			dPanel.str = "";
 		}
 
-		// Ìí¼ÓÂ·Ïß²Ù×÷
-		else if (e.getActionCommand().equals("Ìí¼ÓÂ·Ïß")) {
+		// æ·»åŠ è·¯çº¿æ“ä½œ
+		else if (e.getActionCommand().equals("æ·»åŠ è·¯çº¿")) {
 			addPath(null, null, null);
 		}
 
-		// É¾³ıµØµã²Ù×÷
-		else if (e.getActionCommand().equals("É¾³ı")) {
+		// åˆ é™¤åœ°ç‚¹æ“ä½œ
+		else if (e.getActionCommand().equals("åˆ é™¤")) {
 			String temp = delete.getText();
 			try {
-				if (l.contains(temp) == false)// ÈôÍ¼ÖĞ²»´æÔÚÒªÉ¾³ıµØµã,Å×³öÒì³£
+				if (l.contains(temp) == false)// è‹¥å›¾ä¸­ä¸å­˜åœ¨è¦åˆ é™¤åœ°ç‚¹,æŠ›å‡ºå¼‚å¸¸
 					throw new Exception();
 				ArrayList<Point> a = new ArrayList<Point>();
 				dPanel.noChange();
-				p.getLine(temp, a, g, l);// »ñµÃÁÚ½Ó¶¥µã
+				p.getLine(temp, a, g, l);// è·å¾—é‚»æ¥é¡¶ç‚¹
 				for (int i = 0; i < a.size(); i++)
-					dPanel.deleteLine(l.getPoint(l.indexOf(temp)), a.get(i));// ÔÚµØÍ¼ÖĞÉ¾³ıËùÓĞÏà¹ØÂ·Ïß
-				dPanel.deletePoint(l.getPoint(l.indexOf(temp)), temp);// ÔÚµØÍ¼ÖĞÉ¾³ı¸ÃµØµã
-				p.delete(temp, g, l);// Êµ¼ÊµÄÉ¾³ı²Ù×÷
-				delete.setText("");// Çå¿ÕÎÄ±¾Çø
+					dPanel.deleteLine(l.getPoint(l.indexOf(temp)), a.get(i));// åœ¨åœ°å›¾ä¸­åˆ é™¤æ‰€æœ‰ç›¸å…³è·¯çº¿
+				dPanel.deletePoint(l.getPoint(l.indexOf(temp)), temp);// åœ¨åœ°å›¾ä¸­åˆ é™¤è¯¥åœ°ç‚¹
+				p.delete(temp, g, l);// å®é™…çš„åˆ é™¤æ“ä½œ
+				delete.setText("");// æ¸…ç©ºæ–‡æœ¬åŒº
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, "ÄúËùÒªÉ¾³ıµÄµØµã²»´æÔÚ£¬ÇëÖØĞÂÊäÈë",
+				JOptionPane.showMessageDialog(null, "æ‚¨æ‰€è¦åˆ é™¤çš„åœ°ç‚¹ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥",
 						"error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
-		// É¾³ıÂ·Ïß²Ù×÷
-		else if (e.getActionCommand().equals("É¾³ıÂ·Ïß")) {
+		// åˆ é™¤è·¯çº¿æ“ä½œ
+		else if (e.getActionCommand().equals("åˆ é™¤è·¯çº¿")) {
 			try {
 				if (l.contains(dls.getText()) == false
 						|| l.contains(dle.getText()) == false)
-					throw new Exception();// ÈôÒªÉ¾³ıÂ·ÏßµÄ¶ËµãÓĞÒ»¸ö²»´æÔÚ,Å×³öÒì³£
+					throw new Exception();// è‹¥è¦åˆ é™¤è·¯çº¿çš„ç«¯ç‚¹æœ‰ä¸€ä¸ªä¸å­˜åœ¨,æŠ›å‡ºå¼‚å¸¸
 				dPanel.noChange();
 				dPanel.deleteLine(l.get(l.indexOf(dls.getText())).getPoint(), l
-						.get(l.indexOf(dle.getText())).getPoint());// ÔÚµØÍ¼ÖĞÉ¾³ı¸ÃÂ·Ïß
-				p.deletePath(dls.getText(), dle.getText(), g, l);// Êµ¼ÊµÄÉ¾³ı²Ù×÷
-				dls.setText("");// Çå¿ÕÎÄ±¾Çø
+						.get(l.indexOf(dle.getText())).getPoint());// åœ¨åœ°å›¾ä¸­åˆ é™¤è¯¥è·¯çº¿
+				p.deletePath(dls.getText(), dle.getText(), g, l);// å®é™…çš„åˆ é™¤æ“ä½œ
+				dls.setText("");// æ¸…ç©ºæ–‡æœ¬åŒº
 				dle.setText("");
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, "ÄúËùÒªÉ¾³ıÂ·Ïß²»´æÔÚ£¬ÇëÖØĞÂÊäÈë",
+				JOptionPane.showMessageDialog(null, "æ‚¨æ‰€è¦åˆ é™¤è·¯çº¿ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥",
 						"error", JOptionPane.ERROR_MESSAGE);
 			}
 		}
 
-		// ÒÔÏÂÎª²Ëµ¥À¸Ñ¡ÏîÏìÓ¦
-		// »ñÈ¡ÏµÍ³Ê±¼äÏìÓ¦
-		else if (e.getActionCommand().equals("ÏµÍ³Ê±¼ä")) {
-			JOptionPane.showMessageDialog(null, "Ê±¼ä" + new Date(), "µ±Ç°Ê±¼ä",
-					JOptionPane.INFORMATION_MESSAGE);// new Date()»ñÈ¡ÏµÍ³Ê±¼ä
+		// ä»¥ä¸‹ä¸ºèœå•æ é€‰é¡¹å“åº”
+		// è·å–ç³»ç»Ÿæ—¶é—´å“åº”
+		else if (e.getActionCommand().equals("ç³»ç»Ÿæ—¶é—´")) {
+			JOptionPane.showMessageDialog(null, "æ—¶é—´" + new Date(), "å½“å‰æ—¶é—´",
+					JOptionPane.INFORMATION_MESSAGE);// new Date()è·å–ç³»ç»Ÿæ—¶é—´
 
-		} else if (e.getActionCommand().equals("×îÓÅÂ·Ïß²éÑ¯£¿")) {
+		} else if (e.getActionCommand().equals("æœ€ä¼˜è·¯çº¿æŸ¥è¯¢ï¼Ÿ")) {
 			JOptionPane.showMessageDialog(null,
-					"·Ö±ğÊäÈëÆğÊ¼/ÖÕÖ¹µØµãÃû\n»òÓÃÊó±êÔÚµØÍ¼ÖĞµã»÷ÏàÓ¦ÆğÊ¼/ÖÕÖ¹µØµãºó\n°´È·¶¨¼ü²éÑ¯!", "×îÓÅÂ·Ïß²éÑ¯",
-					JOptionPane.INFORMATION_MESSAGE);// new Date()»ñÈ¡ÏµÍ³Ê±¼ä
+					"åˆ†åˆ«è¾“å…¥èµ·å§‹/ç»ˆæ­¢åœ°ç‚¹å\næˆ–ç”¨é¼ æ ‡åœ¨åœ°å›¾ä¸­ç‚¹å‡»ç›¸åº”èµ·å§‹/ç»ˆæ­¢åœ°ç‚¹å\næŒ‰ç¡®å®šé”®æŸ¥è¯¢!", "æœ€ä¼˜è·¯çº¿æŸ¥è¯¢",
+					JOptionPane.INFORMATION_MESSAGE);// new Date()è·å–ç³»ç»Ÿæ—¶é—´
 
-		} else if (e.getActionCommand().equals("É¾³ıµØµã£¿")) {
-			JOptionPane.showMessageDialog(null, "ÊäÈëÒªÉ¾³ıµØµã²¢°´É¾³ı¼üÈ·ÈÏ!", "É¾³ıµØµã",
-					JOptionPane.INFORMATION_MESSAGE);// new Date()»ñÈ¡ÏµÍ³Ê±¼ä
+		} else if (e.getActionCommand().equals("åˆ é™¤åœ°ç‚¹ï¼Ÿ")) {
+			JOptionPane.showMessageDialog(null, "è¾“å…¥è¦åˆ é™¤åœ°ç‚¹å¹¶æŒ‰åˆ é™¤é”®ç¡®è®¤!", "åˆ é™¤åœ°ç‚¹",
+					JOptionPane.INFORMATION_MESSAGE);// new Date()è·å–ç³»ç»Ÿæ—¶é—´
 
-		} else if (e.getActionCommand().equals("Ìí¼ÓµØµã£¿")) {
+		} else if (e.getActionCommand().equals("æ·»åŠ åœ°ç‚¹ï¼Ÿ")) {
 			JOptionPane
 					.showMessageDialog(
 							null,
-							"ÔÚµØÍ¼ÖĞÓÃÊó±êµ¥»÷È·ÈÏÒªÌí¼ÓµØµãµÄ¾ßÌåÎ»ÖÃ,\n²¢ÔÚÎÄ±¾¿òÖĞÊäÈë¸ÃµØµãÃû³Æ\n°´Ìí¼ÓÈ·ÈÏ\nÈôÌí¼ÓÓĞÎó,¿É°´È¡Ïû¼üÈ¡Ïû±¾´ÎÌí¼Ó!",
-							"Ìí¼ÓµØµã", JOptionPane.INFORMATION_MESSAGE);// new
-																		// Date()»ñÈ¡ÏµÍ³Ê±¼ä
-		} else if (e.getActionCommand().equals("É¾³ıÂ·Ïß£¿")) {
+							"åœ¨åœ°å›¾ä¸­ç”¨é¼ æ ‡å•å‡»ç¡®è®¤è¦æ·»åŠ åœ°ç‚¹çš„å…·ä½“ä½ç½®,\nå¹¶åœ¨æ–‡æœ¬æ¡†ä¸­è¾“å…¥è¯¥åœ°ç‚¹åç§°\næŒ‰æ·»åŠ ç¡®è®¤\nè‹¥æ·»åŠ æœ‰è¯¯,å¯æŒ‰å–æ¶ˆé”®å–æ¶ˆæœ¬æ¬¡æ·»åŠ !",
+							"æ·»åŠ åœ°ç‚¹", JOptionPane.INFORMATION_MESSAGE);// new
+																		// Date()è·å–ç³»ç»Ÿæ—¶é—´
+		} else if (e.getActionCommand().equals("åˆ é™¤è·¯çº¿ï¼Ÿ")) {
 			JOptionPane.showMessageDialog(null,
-					"ÔÚÎÄ±¾¿òÖĞÊäÈëÒªÉ¾³ıÂ·ÏßµÄÆğÊ¼ºÍÖÕÖ¹µØµã,°´É¾³ıÂ·Ïß¼üÈ·ÈÏÉ¾³ı!", "É¾³ıÂ·Ïß",
-					JOptionPane.INFORMATION_MESSAGE);// new Date()»ñÈ¡ÏµÍ³Ê±¼ä
+					"åœ¨æ–‡æœ¬æ¡†ä¸­è¾“å…¥è¦åˆ é™¤è·¯çº¿çš„èµ·å§‹å’Œç»ˆæ­¢åœ°ç‚¹,æŒ‰åˆ é™¤è·¯çº¿é”®ç¡®è®¤åˆ é™¤!", "åˆ é™¤è·¯çº¿",
+					JOptionPane.INFORMATION_MESSAGE);// new Date()è·å–ç³»ç»Ÿæ—¶é—´
 
-		} else if (e.getActionCommand().equals("Ìí¼ÓÂ·Ïß£¿")) {
+		} else if (e.getActionCommand().equals("æ·»åŠ è·¯çº¿ï¼Ÿ")) {
 			JOptionPane.showMessageDialog(null,
-					"ÔÚÎÄ±¾¿òÖĞÊäÈëÒªÌí¼ÓÂ·ÏßµÄÆğÊ¼ºÍÖÕÖ¹µØµãÒÔ¼°Â·Ïß³¤¶È(km),°´Ìí¼ÓÂ·Ïß¼üÈ·ÈÏÌí¼Ó!", "Ìí¼ÓÂ·Ïß?",
-					JOptionPane.INFORMATION_MESSAGE);// new Date()»ñÈ¡ÏµÍ³Ê±¼ä
+					"åœ¨æ–‡æœ¬æ¡†ä¸­è¾“å…¥è¦æ·»åŠ è·¯çº¿çš„èµ·å§‹å’Œç»ˆæ­¢åœ°ç‚¹ä»¥åŠè·¯çº¿é•¿åº¦(km),æŒ‰æ·»åŠ è·¯çº¿é”®ç¡®è®¤æ·»åŠ !", "æ·»åŠ è·¯çº¿?",
+					JOptionPane.INFORMATION_MESSAGE);// new Date()è·å–ç³»ç»Ÿæ—¶é—´
 
-		} else if (e.getActionCommand().equals("µ¼ÈëµØÍ¼Êı¾İ")) {
+		} else if (e.getActionCommand().equals("å¯¼å…¥åœ°å›¾æ•°æ®")) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.addChoosableFileFilter(new javax.swing.filechooser.FileFilter() {
 				@Override
@@ -471,14 +471,14 @@ public class ShortPath extends JFrame implements ActionListener {
 			fileChooser.setCurrentDirectory(fsv.getHomeDirectory());
 			if(fileChooser.showOpenDialog(this) == JFileChooser.APPROVE_OPTION){
 				if(true == loadMap(fileChooser.getSelectedFile().getAbsolutePath())){
-					JOptionPane.showMessageDialog(null, "µ¼ÈëµØÍ¼Êı¾İ³É¹¦!", "µ¼³öµØÍ¼Êı¾İ",
+					JOptionPane.showMessageDialog(null, "å¯¼å…¥åœ°å›¾æ•°æ®æˆåŠŸ!", "å¯¼å‡ºåœ°å›¾æ•°æ®",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "µ¼ÈëµØÍ¼Êı¾İ´íÎó£¬ÇëÖØĞÂµ¼Èë!", "µ¼³öµØÍ¼Êı¾İ",
+					JOptionPane.showMessageDialog(null, "å¯¼å…¥åœ°å›¾æ•°æ®é”™è¯¯ï¼Œè¯·é‡æ–°å¯¼å…¥!", "å¯¼å‡ºåœ°å›¾æ•°æ®",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
-		} else if (e.getActionCommand().equals("µ¼³öµØÍ¼Êı¾İ")) {
+		} else if (e.getActionCommand().equals("å¯¼å‡ºåœ°å›¾æ•°æ®")) {
 			JFileChooser fileChooser = new JFileChooser();
 			fileChooser.addChoosableFileFilter(new javax.swing.filechooser.FileFilter() {
 				@Override
@@ -496,10 +496,10 @@ public class ShortPath extends JFrame implements ActionListener {
 			if(fileChooser.showSaveDialog(this) == JFileChooser.APPROVE_OPTION){
 				if (true == createMap(fileChooser.getSelectedFile()
 						.getAbsolutePath())) {
-					JOptionPane.showMessageDialog(null, "µ¼³öµØÍ¼Êı¾İ³É¹¦!", "µ¼³öµØÍ¼Êı¾İ",
+					JOptionPane.showMessageDialog(null, "å¯¼å‡ºåœ°å›¾æ•°æ®æˆåŠŸ!", "å¯¼å‡ºåœ°å›¾æ•°æ®",
 							JOptionPane.INFORMATION_MESSAGE);
 				} else {
-					JOptionPane.showMessageDialog(null, "µ¼³öµØÍ¼Êı¾İ´íÎó£¬ÇëÖØĞÂµ¼³ö!", "µ¼³öµØÍ¼Êı¾İ",
+					JOptionPane.showMessageDialog(null, "å¯¼å‡ºåœ°å›¾æ•°æ®é”™è¯¯ï¼Œè¯·é‡æ–°å¯¼å‡º!", "å¯¼å‡ºåœ°å›¾æ•°æ®",
 							JOptionPane.INFORMATION_MESSAGE);
 				}
 			}			
@@ -510,32 +510,32 @@ public class ShortPath extends JFrame implements ActionListener {
 		try {
 			if(start != null && end != null && w != null){
 				if(false == l.contains(start) || false == l.contains(end)){
-					throw new IOException();// ÈôÆğÊ¼»òÖÕÖ¹µØµã²»´æÔÚ,Å×³öÒì³£
+					throw new IOException();// è‹¥èµ·å§‹æˆ–ç»ˆæ­¢åœ°ç‚¹ä¸å­˜åœ¨,æŠ›å‡ºå¼‚å¸¸
 				} 
 				if(g.exsit(l.indexOf(start), l.indexOf(end))){
-					g.delete(l.indexOf(start), l.indexOf(end));// ÈôÌí¼ÓÂ·ÏßÒÑ¾­´æÔÚ,ÔòÉ¾³ı
+					g.delete(l.indexOf(start), l.indexOf(end));// è‹¥æ·»åŠ è·¯çº¿å·²ç»å­˜åœ¨,åˆ™åˆ é™¤
 				}
 				if(true == isNumeric(w)){
 					p.addPath(start, end, Double.parseDouble(w), g, l);
 					dPanel.noChange();
-					dPanel.addLine(start, end, w); // µØÍ¼ÖĞµÄÌí¼Ó²Ù×÷
+					dPanel.addLine(start, end, w); // åœ°å›¾ä¸­çš„æ·»åŠ æ“ä½œ
 				} else {
 					throw new IOException();
 				}
 			} else {
 				if (l.contains(als.getText()) == false
 						|| l.contains(ale.getText()) == false)
-					throw new IOException();// ÈôÆğÊ¼»òÖÕÖ¹µØµã²»´æÔÚ,Å×³öÒì³£
+					throw new IOException();// è‹¥èµ·å§‹æˆ–ç»ˆæ­¢åœ°ç‚¹ä¸å­˜åœ¨,æŠ›å‡ºå¼‚å¸¸
 				if (g.exsit(l.indexOf(als.getText()), l.indexOf(ale.getText())))
-					throw new Exception();// ÈôÌí¼ÓÂ·ÏßÒÑ¾­´æÔÚ,Å×³öÒì³£
+					throw new Exception();// è‹¥æ·»åŠ è·¯çº¿å·²ç»å­˜åœ¨,æŠ›å‡ºå¼‚å¸¸
 				String num = weight.getText();
 				if(true == isNumeric(num)){
 					p.addPath(als.getText(), ale.getText(),
-							Double.parseDouble(num), g, l);// Êµ¼ÊµÄÌí¼Ó²Ù×÷		
+							Double.parseDouble(num), g, l);// å®é™…çš„æ·»åŠ æ“ä½œ		
 					dPanel.noChange();
 					dPanel.addLine(l.getPoint(l.indexOf(als.getText())),
-							l.getPoint(l.indexOf(ale.getText())), num); // µØÍ¼ÖĞµÄÌí¼Ó²Ù×÷			
-					weight.setText("");// Çå¿ÕÎÄ±¾Çø
+							l.getPoint(l.indexOf(ale.getText())), num); // åœ°å›¾ä¸­çš„æ·»åŠ æ“ä½œ			
+					weight.setText("");// æ¸…ç©ºæ–‡æœ¬åŒº
 					als.setText("");
 					ale.setText("");
 				} else {
@@ -543,13 +543,13 @@ public class ShortPath extends JFrame implements ActionListener {
 				}
 			}
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null, "ÄúËùÊäÈëµÄÂ·¾¶ÓĞÎó£¬ÇëÖØĞÂÊäÈë", "error",
+			JOptionPane.showMessageDialog(null, "æ‚¨æ‰€è¾“å…¥çš„è·¯å¾„æœ‰è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥", "error",
 					JOptionPane.ERROR_MESSAGE);
 			weight.setText("");
 			als.setText("");
 			ale.setText("");
 		} catch (Exception x) {
-			JOptionPane.showMessageDialog(null, "¸ÃÂ·ÏßÒÑ¾­´æÔÚ£¬ÇëÖØĞÂÊäÈë", "error",
+			JOptionPane.showMessageDialog(null, "è¯¥è·¯çº¿å·²ç»å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥", "error",
 					JOptionPane.ERROR_MESSAGE);
 			weight.setText("");
 			als.setText("");
@@ -560,28 +560,28 @@ public class ShortPath extends JFrame implements ActionListener {
 	private void addPoint() {
 		dPanel.noChange();
 		try {
-			if (dPanel.p == null || add.getText().equals(""))// ÈôÎªÔÚÍ¼ÖĞÌí¼ÓĞÂµã,Å×³öÒì³£
+			if (dPanel.p == null || add.getText().equals(""))// è‹¥ä¸ºåœ¨å›¾ä¸­æ·»åŠ æ–°ç‚¹,æŠ›å‡ºå¼‚å¸¸
 				throw new IOException();
-			if (l.contains(add.getText()))// ÈôĞÂÌí¼ÓµØµãÒÑ´æÔÚ,Å×³öÒì³£
+			if (l.contains(add.getText()))// è‹¥æ–°æ·»åŠ åœ°ç‚¹å·²å­˜åœ¨,æŠ›å‡ºå¼‚å¸¸
 				throw new Exception();
-			p.add(add.getText(), g, l, dPanel.p);// Ìí¼Ó¸Ãµã
-			dPanel.addPoint(add.getText());// ÔÚµØÍ¼ÖĞÌí¼ÓĞÂµãÃû³Æ
+			p.add(add.getText(), g, l, dPanel.p);// æ·»åŠ è¯¥ç‚¹
+			dPanel.addPoint(add.getText());// åœ¨åœ°å›¾ä¸­æ·»åŠ æ–°ç‚¹åç§°
 			add.setText("");
 		} catch (IOException ex) {
-			JOptionPane.showMessageDialog(null, "ÇëÄúµØÍ¼ÖĞÌí¼ÓµØµãÎ»ÖÃ²¢ÊäÈë¸ÃµØµãÃû³Æ£¡",
+			JOptionPane.showMessageDialog(null, "è¯·æ‚¨åœ°å›¾ä¸­æ·»åŠ åœ°ç‚¹ä½ç½®å¹¶è¾“å…¥è¯¥åœ°ç‚¹åç§°ï¼",
 					"error", JOptionPane.ERROR_MESSAGE);
 		} catch (Exception ex) {
-			JOptionPane.showMessageDialog(null, "¸ÃµØµãÒÑ¾­´æÔÚ£¬ÇëÄúÖØĞÂÊäÈë£¡", "error",
+			JOptionPane.showMessageDialog(null, "è¯¥åœ°ç‚¹å·²ç»å­˜åœ¨ï¼Œè¯·æ‚¨é‡æ–°è¾“å…¥ï¼", "error",
 					JOptionPane.ERROR_MESSAGE);
 			dPanel.noChange();
-			dPanel.deletePointOnly(dPanel.p);// Ö»É¾³ıÖ®Ç°Ìí¼ÓµÄµã
+			dPanel.deletePointOnly(dPanel.p);// åªåˆ é™¤ä¹‹å‰æ·»åŠ çš„ç‚¹
 			add.setText("");
 			dPanel.p = null;
 			dPanel.str = null;
 		}
 	}
 
-	// main·½·¨
+	// mainæ–¹æ³•
 	public static void main(String args[]) {
 
 		ShortPath gps = new ShortPath();

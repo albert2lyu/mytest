@@ -1,5 +1,8 @@
 package com.shortpath;
-import java.awt.event.*;
+
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 
 public class WindowDestroyer extends WindowAdapter
 {

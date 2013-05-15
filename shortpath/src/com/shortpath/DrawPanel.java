@@ -12,32 +12,32 @@ import java.awt.event.MouseMotionListener;
 import java.util.ArrayList;
 import javax.swing.JPanel;
 
-//ÀàDrawPanel
-//µØÍ¼µÄÏÔÊ¾,¼°Ïà¹Ø²Ù×÷ºóµØÍ¼µÄĞŞ¸Ä,»ñµÃĞÂÌí¼ÓµØµãµÄÎ»ÖÃ¼°»ñµÃ²éÑ¯×î¶ÌÂ·ÏßµÄ¶ËµãµÄÎ»ÖÃ
+//ç±»DrawPanel
+//åœ°å›¾çš„æ˜¾ç¤º,åŠç›¸å…³æ“ä½œååœ°å›¾çš„ä¿®æ”¹,è·å¾—æ–°æ·»åŠ åœ°ç‚¹çš„ä½ç½®åŠè·å¾—æŸ¥è¯¢æœ€çŸ­è·¯çº¿çš„ç«¯ç‚¹çš„ä½ç½®
 public class DrawPanel extends JPanel implements MouseListener,
 		MouseMotionListener {
 
 	private static final long serialVersionUID = -2215724210017542936L;
 
 	Graphics2D g2d;
-	private ArrayList<Point> a;// ´æ´¢Í¼ÖĞËùÓĞ¶¥µã×ø±ê
+	private ArrayList<Point> a;// å­˜å‚¨å›¾ä¸­æ‰€æœ‰é¡¶ç‚¹åæ ‡
 	public ArrayList<Point> getA() {
 		return a;
 	}
 
-	private ArrayList<Point> b;// ´æ´¢Í¼ÖĞËùÓĞÂ·ÏßµÄÆğÊ¼µã×ø±ê
+	private ArrayList<Point> b;// å­˜å‚¨å›¾ä¸­æ‰€æœ‰è·¯çº¿çš„èµ·å§‹ç‚¹åæ ‡
 	public ArrayList<Point> getB() {
 		return b;
 	}
 
-	private ArrayList<Point> c;// ´æ´¢Í¼ÖĞËùÓĞÂ·ÏßµÄÖÕÖ¹µã×ø±ê
+	private ArrayList<Point> c;// å­˜å‚¨å›¾ä¸­æ‰€æœ‰è·¯çº¿çš„ç»ˆæ­¢ç‚¹åæ ‡
 	public ArrayList<Point> getC() {
 		return c;
 	}
-	private ArrayList<Point> d = new ArrayList<Point>();// ÒÀ´Î´æ´¢×î¶ÌÂ·¾¶Í¾¾¶µã×ø±ê
-	private ArrayList<Point> e = new ArrayList<Point>();// ÒÀ´Î´æ´¢ÉÏ´Î²éÑ¯×î¶ÌÂ·¾¶Í¾¾¶µã×ø±ê,ÓÃÓÚ»¹Ô­µØÍ¼
-	ArrayList<Point> f = new ArrayList<Point>();// ÓÃÓÚ´æ´¢Êó±êµã»÷»ñµÃµÄ²éÑ¯×î¶ÌÂ·¾¶µÄÁ½µã×ø±ê
-	private ArrayList<String> name = new ArrayList<String>();// ÓÃÓÚ´æ´¢¸öµØµãÃû³Æ
+	private ArrayList<Point> d = new ArrayList<Point>();// ä¾æ¬¡å­˜å‚¨æœ€çŸ­è·¯å¾„é€”å¾„ç‚¹åæ ‡
+	private ArrayList<Point> e = new ArrayList<Point>();// ä¾æ¬¡å­˜å‚¨ä¸Šæ¬¡æŸ¥è¯¢æœ€çŸ­è·¯å¾„é€”å¾„ç‚¹åæ ‡,ç”¨äºè¿˜åŸåœ°å›¾
+	ArrayList<Point> f = new ArrayList<Point>();// ç”¨äºå­˜å‚¨é¼ æ ‡ç‚¹å‡»è·å¾—çš„æŸ¥è¯¢æœ€çŸ­è·¯å¾„çš„ä¸¤ç‚¹åæ ‡
+	private ArrayList<String> name = new ArrayList<String>();// ç”¨äºå­˜å‚¨ä¸ªåœ°ç‚¹åç§°
 	public ArrayList<String> getN() {
 		return name;
 	}
@@ -46,31 +46,31 @@ public class DrawPanel extends JPanel implements MouseListener,
 	Point p;
 	String str = "", str1, str2;
 
-	// »­Í¼·½·¨
+	// ç”»å›¾æ–¹æ³•
 	public void paint(Graphics g) {
 		super.paint(g);
-		setBackground(Color.WHITE);// ÉèÖÃ±³¾°ÑÕÉ«
+		setBackground(Color.WHITE);// è®¾ç½®èƒŒæ™¯é¢œè‰²
 		g2d = (Graphics2D) g;
-		g2d.setColor(Color.BLACK);// ÉèÖÃ»­±ÊÑÕÉ«
+		g2d.setColor(Color.BLACK);// è®¾ç½®ç”»ç¬”é¢œè‰²
 		for (int i = 0; i < b.size(); i++) {
-			g2d.drawLine(b.get(i).x, b.get(i).y, c.get(i).x, c.get(i).y);// »­Â·¾¶
+			g2d.drawLine(b.get(i).x, b.get(i).y, c.get(i).x, c.get(i).y);// ç”»è·¯å¾„
 			g2d.drawString(w.get(i), (b.get(i).x + c.get(i).x) / 2,
-					(b.get(i).y + c.get(i).y) / 2);// Ğ´ÈëÂ·¾¶³¤¶È
+					(b.get(i).y + c.get(i).y) / 2);// å†™å…¥è·¯å¾„é•¿åº¦
 		}
 
 		g2d.setColor(Color.blue);
 		for (int i = 0; i < a.size(); i++)
-			g2d.fillOval(a.get(i).x, a.get(i).y, n, n);// »­µØµã
+			g2d.fillOval(a.get(i).x, a.get(i).y, n, n);// ç”»åœ°ç‚¹
 
 		for (int i = 0; i < name.size(); i++)
-			g2d.drawString(name.get(i), a.get(i).x - 3, a.get(i).y - 3);// Ğ´µØµãÃû³Æ
+			g2d.drawString(name.get(i), a.get(i).x - 3, a.get(i).y - 3);// å†™åœ°ç‚¹åç§°
 
 		for (int i = 0; i < e.size(); i++) {
 			g2d.setColor(Color.WHITE);
-			g2d.fillOval(e.get(i).x, e.get(i).y, n, n);// È¡ÏûÇ°Ò»´Î²éÑ¯ºó»­ÈëµÄºìÉ«Â·Ïß
+			g2d.fillOval(e.get(i).x, e.get(i).y, n, n);// å–æ¶ˆå‰ä¸€æ¬¡æŸ¥è¯¢åç”»å…¥çš„çº¢è‰²è·¯çº¿
 		}
 
-		// ±êÊ¶×î¶ÌÂ·¾¶
+		// æ ‡è¯†æœ€çŸ­è·¯å¾„
 		for (int i = 0; i < d.size() - 1; i++) {
 			g2d.setColor(Color.RED);
 			g2d.drawLine(d.get(i).x + 3, d.get(i).y + 3, d.get(i + 1).x + 3,
@@ -79,7 +79,7 @@ public class DrawPanel extends JPanel implements MouseListener,
 			g2d.fillOval(d.get(0).x, d.get(0).y, 7, 7);
 		}
 
-		// ±êÊ¶Ñ¡ÖĞµØµã
+		// æ ‡è¯†é€‰ä¸­åœ°ç‚¹
 		for (int i = 0; i < f.size(); i++) {
 			g2d.setColor(Color.RED);
 			g2d.fillOval(f.get(i).x, f.get(i).y, 7, 7);
@@ -87,19 +87,19 @@ public class DrawPanel extends JPanel implements MouseListener,
 
 	}
 
-	// »­×î¶ÌÂ·¾¶
+	// ç”»æœ€çŸ­è·¯å¾„
 	public void paintLine(Point s) {
-		d.add(s);// ÔÚ×î¶ÌÂ·¾¶ÁĞ±íÖĞ¼ÓÈë¶¥µãs
+		d.add(s);// åœ¨æœ€çŸ­è·¯å¾„åˆ—è¡¨ä¸­åŠ å…¥é¡¶ç‚¹s
 		repaint();
 	}
 
-	// É¾³ıÓÉsµ½eµÄÂ·¾¶
+	// åˆ é™¤ç”±såˆ°eçš„è·¯å¾„
 	public void deleteLine(Point s, Point e) {
 		Point start = new Point(s.x + 3, s.y + 3);
 		Point end = new Point(e.x + 3, e.y + 3);
 
 		for (int i = 0; i < b.size(); i++) {
-			// ÔÚbºÍcÖĞÑ°ÕÒÖ¸¶¨±ß,²¢½«ÆäÆğµãºÍÖÕµãÒÆ³ı
+			// åœ¨bå’Œcä¸­å¯»æ‰¾æŒ‡å®šè¾¹,å¹¶å°†å…¶èµ·ç‚¹å’Œç»ˆç‚¹ç§»é™¤
 			if (b.get(i).equals(start) && c.get(i).equals(end)
 					|| b.get(i).equals(end) && c.get(i).equals(start)) {
 				b.remove(i);
@@ -111,34 +111,34 @@ public class DrawPanel extends JPanel implements MouseListener,
 		}
 	}
 
-	// Ö»É¾³ı¶¥µãs
+	// åªåˆ é™¤é¡¶ç‚¹s
 	public void deletePointOnly(Point s) {
 		e.add(s);
-		a.remove(s);// µØµãÁĞ±íÖĞÒÆ³ıµØµãe
+		a.remove(s);// åœ°ç‚¹åˆ—è¡¨ä¸­ç§»é™¤åœ°ç‚¹e
 		repaint();
 		e.clear();
 	}
 
-	// É¾³ıÃû³ÆÎªstrµÄµãs
+	// åˆ é™¤åç§°ä¸ºstrçš„ç‚¹s
 	public void deletePoint(Point s, String str) {
 		e.add(s);
-		a.remove(s);// µØµãÁĞ±íÖĞÒÆ³ıµØµãe
-		name.remove(str);// µØµãÃû³ÆÁĞ±íÖĞÒÆ³ıµØµãstr
+		a.remove(s);// åœ°ç‚¹åˆ—è¡¨ä¸­ç§»é™¤åœ°ç‚¹e
+		name.remove(str);// åœ°ç‚¹åç§°åˆ—è¡¨ä¸­ç§»é™¤åœ°ç‚¹str
 		repaint();
 		e.clear();
 	}
 
-	// Ìí¼ÓÃû³ÆÎªsµÄ¶¥µã,¸Ã²Ù×÷ÓÃÓÚ²éÑ¯²Ù×÷Ê±Ñ¡È¡µØµã
+	// æ·»åŠ åç§°ä¸ºsçš„é¡¶ç‚¹,è¯¥æ“ä½œç”¨äºæŸ¥è¯¢æ“ä½œæ—¶é€‰å–åœ°ç‚¹
 	public void addPoint(String s) {
 		if (s.equals("") == false) {
-			name.add(s);// µØµãÃû³ÆÁĞ±íÖĞÌí¼ÓµØµãstr
+			name.add(s);// åœ°ç‚¹åç§°åˆ—è¡¨ä¸­æ·»åŠ åœ°ç‚¹str
 			str = s;
 			p = null;
 		}
 		repaint();
 	}
 
-	// Ìí¼Ó´Ósµ½e³¤¶ÈÎªweightµÄÂ·¾¶
+	// æ·»åŠ ä»såˆ°eé•¿åº¦ä¸ºweightçš„è·¯å¾„
 	public void addLine(Point s, Point e, String weight) {
 		if (s != null && e != null) {
 			b.add(new Point(s.x + 3, s.y + 3));
@@ -148,9 +148,9 @@ public class DrawPanel extends JPanel implements MouseListener,
 		}
 	}
 
-	// ³·ÏúÉÏ´Î±êÊ¶µÄ×î¶ÌÂ·¾¶
+	// æ’¤é”€ä¸Šæ¬¡æ ‡è¯†çš„æœ€çŸ­è·¯å¾„
 	public void noChange() {
-		d.clear();// Çå¿ÕÁĞ±íd
+		d.clear();// æ¸…ç©ºåˆ—è¡¨d
 		repaint();
 	}
 
@@ -159,7 +159,7 @@ public class DrawPanel extends JPanel implements MouseListener,
 		return w;
 	}
 
-	// ¹¹Ôìº¯Êı
+	// æ„é€ å‡½æ•°
 	public DrawPanel() {
 		setBackground(Color.WHITE);
 		setPreferredSize(new Dimension(600, 600));
@@ -205,11 +205,11 @@ public class DrawPanel extends JPanel implements MouseListener,
 		name.add("d");
 		name.add("e");
 
-		addMouseListener(this);// Ìí¼ÓÊó±ê¼àÌı
-		addMouseMotionListener(this);// Ìí¼ÓÊó±ê¶¯×÷¼àÌı
+		addMouseListener(this);// æ·»åŠ é¼ æ ‡ç›‘å¬
+		addMouseMotionListener(this);// æ·»åŠ é¼ æ ‡åŠ¨ä½œç›‘å¬
 	}
 
-	// ·µ»ØÔÚnameÁĞ±íÖĞË÷ÒıÎªiµÄÔªËØ
+	// è¿”å›åœ¨nameåˆ—è¡¨ä¸­ç´¢å¼•ä¸ºiçš„å…ƒç´ 
 	public String getName(int i) {
 		if (i >= 0 && i < f.size()) {
 			str = name.get(a.indexOf(f.get(i)));
@@ -219,31 +219,31 @@ public class DrawPanel extends JPanel implements MouseListener,
 
 	}
 
-	// Êó±êÏìÓ¦
+	// é¼ æ ‡å“åº”
 
-	// Êó±êµ¥»÷
-	// Ìí¼ÓĞÂµØµã»òÌí¼Ó²éÑ¯×î¶ÌÂ·¾¶µÄ¶Ëµã
+	// é¼ æ ‡å•å‡»
+	// æ·»åŠ æ–°åœ°ç‚¹æˆ–æ·»åŠ æŸ¥è¯¢æœ€çŸ­è·¯å¾„çš„ç«¯ç‚¹
 	public void mouseClicked(MouseEvent e) {
 		noChange();
 		if (f.size() == 2) {
 			f.clear();
 		}
-		xPos = e.getX();// »ñµÃ¸ÃµãxÖá×ø±ê
-		yPos = e.getY();// »ñµÃ¸ÃµãyÖá×ø±ê
+		xPos = e.getX();// è·å¾—è¯¥ç‚¹xè½´åæ ‡
+		yPos = e.getY();// è·å¾—è¯¥ç‚¹yè½´åæ ‡
 		int i;
 
-		// Èôµã»÷Í¾ÖĞÔ­ÓĞµØµã,Ôò×¼±¸²éÑ¯²Ù×÷
+		// è‹¥ç‚¹å‡»é€”ä¸­åŸæœ‰åœ°ç‚¹,åˆ™å‡†å¤‡æŸ¥è¯¢æ“ä½œ
 		for (i = 0; i < a.size(); i++) {
 			if (Point.distance(xPos, yPos, a.get(i).x, a.get(i).y) <= n) {
-				f.add(a.get(i));// ±êÊ¶¸Ãµã
+				f.add(a.get(i));// æ ‡è¯†è¯¥ç‚¹
 				break;
 			}
 		}
 
-		// Èôµã»÷ĞÂÎ»ÖÃ,Ìí¼Ó¸ÃĞÂµØµã
+		// è‹¥ç‚¹å‡»æ–°ä½ç½®,æ·»åŠ è¯¥æ–°åœ°ç‚¹
 		if (i == a.size()) {
 			p = new Point(xPos, yPos);
-			a.add(p);// ÔÚµØµãÁĞ±íÖĞÌí¼Ó¸Ãµã
+			a.add(p);// åœ¨åœ°ç‚¹åˆ—è¡¨ä¸­æ·»åŠ è¯¥ç‚¹
 		}
 		repaint();
 	}
@@ -260,10 +260,10 @@ public class DrawPanel extends JPanel implements MouseListener,
 	public void mouseExited(MouseEvent e) {
 	}
 
-	// Êó±ê¶¯×÷ÏàÓ¦
-	// Êó±êÒÆ¶¯ÏàÓ¦
+	// é¼ æ ‡åŠ¨ä½œç›¸åº”
+	// é¼ æ ‡ç§»åŠ¨ç›¸åº”
 	public void mouseMoved(MouseEvent e) {
-		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// Êó±ê±äÎªÊÖĞÍ
+		setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));// é¼ æ ‡å˜ä¸ºæ‰‹å‹
 	}
 
 	public void mouseDragged(MouseEvent e) {

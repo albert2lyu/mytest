@@ -3,8 +3,8 @@ package com.shortpath;
 import java.awt.Point;
 import java.util.ArrayList;
 
-//ÀàList
-//»ùÓÚArrayListÀàµÄÒ»¸ö×Ô¶¨ÒåÀà,ÓÃÓÚ´æ´¢µ±Ç°µØÍ¼ÖĞËùÓĞµÄµØµã(Place)µÄÏà¹ØĞÅÏ¢
+//ç±»List
+//åŸºäºArrayListç±»çš„ä¸€ä¸ªè‡ªå®šä¹‰ç±»,ç”¨äºå­˜å‚¨å½“å‰åœ°å›¾ä¸­æ‰€æœ‰çš„åœ°ç‚¹(Place)çš„ç›¸å…³ä¿¡æ¯
 public class List {
 	private ArrayList<Place> list;
 	
@@ -13,8 +13,8 @@ public class List {
 	}
 
 
-	//¹¹Ôì·½·¨
-	//´æ´¢µ±Ç°µØÍ¼
+	//æ„é€ æ–¹æ³•
+	//å­˜å‚¨å½“å‰åœ°å›¾
 	public List(){
 		list=new ArrayList<Place>();
 		add(0,new Place(new String("empty"),new Point(0,0)));
@@ -26,22 +26,22 @@ public class List {
 	}
 	
 	
-	//ÔÚListÎ²²¿×·¼ÓĞÂÔªËØ
-	//²ÎÊıelement(Place)ÊÇĞÂÌí¼ÓµÄÔªËØ
+	//åœ¨Listå°¾éƒ¨è¿½åŠ æ–°å…ƒç´ 
+	//å‚æ•°element(Place)æ˜¯æ–°æ·»åŠ çš„å…ƒç´ 
 	public List add(Place element){
 		list.add(element);
 		return this;
 	}
 	
 	
-	//ÔÚListÖ¸¶¨Î»ÖÃÌí¼ÓÖ¸¶¨ÔªËØ
-	//²ÎÊıindexÎªÖ¸¶¨Î»ÖÃ²ÎÊı,elementÎªÖ¸¶¨ÔªËØ
+	//åœ¨ListæŒ‡å®šä½ç½®æ·»åŠ æŒ‡å®šå…ƒç´ 
+	//å‚æ•°indexä¸ºæŒ‡å®šä½ç½®å‚æ•°,elementä¸ºæŒ‡å®šå…ƒç´ 
 	public List add(int index,Place element){
 		list.add(index, element);
 		return this;
 	}
 	
-	//ÈôÁĞ±íÖĞ°üº¬Ãû³ÆÎªeµÄÔªËØ,Ôò·µ»Øtrue
+	//è‹¥åˆ—è¡¨ä¸­åŒ…å«åç§°ä¸ºeçš„å…ƒç´ ,åˆ™è¿”å›true
 	public boolean contains(String e){
 		for(int i=0;i<list.size();i++)
 			if(list.get(i).getName().equals(e))
@@ -49,7 +49,7 @@ public class List {
 		return false;
 	}
 	
-	//ÈôÁĞ±íÖĞ°üº¬Ãû³ÆÎªeµÄÔªËØ,Ôò·µ»Øtrue
+	//è‹¥åˆ—è¡¨ä¸­åŒ…å«åç§°ä¸ºeçš„å…ƒç´ ,åˆ™è¿”å›true
 	public boolean contains(Point e){
 		for(int i=0;i<list.size();i++)
 			if(list.get(i).getPoint().x == e.x && list.get(i).getPoint().y == e.y)
@@ -57,12 +57,12 @@ public class List {
 		return false;
 	}
 	
-	//·µ»ØÖ¸¶¨Î»ÖÃÔªËØµÄÃû³Æ
+	//è¿”å›æŒ‡å®šä½ç½®å…ƒç´ çš„åç§°
 	public String getName(int index){
 		return list.get(index).getName();
 	}
 	
-	//·µ»ØÖ¸¶¨Î»ÖÃÔªËØµÄÎ»ÖÃ
+	//è¿”å›æŒ‡å®šä½ç½®å…ƒç´ çš„ä½ç½®
 	public Point getPoint(int index){
 		if(index>0&&index<list.size())
 			return list.get(index).getPoint();
@@ -70,7 +70,7 @@ public class List {
 			return null;
 	}
 	
-	//·µ»ØÃû³ÆÎªeµÄÔªËØµÄË÷Òı,ÈôÁĞ±íÖĞ²»´æÔÚ¸ÃÔªËØ,Ôò·µ»Ø-1;
+	//è¿”å›åç§°ä¸ºeçš„å…ƒç´ çš„ç´¢å¼•,è‹¥åˆ—è¡¨ä¸­ä¸å­˜åœ¨è¯¥å…ƒç´ ,åˆ™è¿”å›-1;
 	public int indexOf(String e){
 		for(int i=1;i<list.size();i++)
 			if(list.get(i).getName().equals(e))
@@ -78,7 +78,7 @@ public class List {
 		return -1;	
 	}
 
-	//·µ»ØÃû³ÆÎªeµÄÔªËØµÄË÷Òı,ÈôÁĞ±íÖĞ²»´æÔÚ¸ÃÔªËØ,Ôò·µ»Ø-1;
+	//è¿”å›åç§°ä¸ºeçš„å…ƒç´ çš„ç´¢å¼•,è‹¥åˆ—è¡¨ä¸­ä¸å­˜åœ¨è¯¥å…ƒç´ ,åˆ™è¿”å›-1;
 	public int indexOf(Point e){
 		for(int i=1;i<list.size();i++)
 			if(list.get(i).getPoint().x == e.x && list.get(i).getPoint().y == e.y)
@@ -86,18 +86,18 @@ public class List {
 		return -1;	
 	}	
 	
-	//´ÓÁĞ±íÖĞÒÆ³ıÃû³ÆÎªeÔªËØ,ÈôÁĞ±íÖĞ²»´æÔÚ¸ÃÔªËØ·µ»Øfalse
+	//ä»åˆ—è¡¨ä¸­ç§»é™¤åç§°ä¸ºeå…ƒç´ ,è‹¥åˆ—è¡¨ä¸­ä¸å­˜åœ¨è¯¥å…ƒç´ è¿”å›false
 	public boolean remove(String e){
 		int i = indexOf(e);
 	    return list.remove(list.get(i));
 	}
 	
-	//·µ»Ø´ËÁĞ±íÖĞµÄÔªËØÊı
+	//è¿”å›æ­¤åˆ—è¡¨ä¸­çš„å…ƒç´ æ•°
 	public int size(){
 		return list.size();
 	}
 	
-	//·µ»Ø´ËÁĞ±íÖĞÖ¸¶¨Î»ÖÃindexµÄÔªËØ
+	//è¿”å›æ­¤åˆ—è¡¨ä¸­æŒ‡å®šä½ç½®indexçš„å…ƒç´ 
 	public Place get(int index){
 		return list.get(index);
 	}

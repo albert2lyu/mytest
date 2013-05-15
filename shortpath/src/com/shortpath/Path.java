@@ -4,35 +4,35 @@ import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
-//ÀàPath
-//°üº¬ÊäÈëÎÄ±¾ĞÅÏ¢ºóµÄÊµÏÖÏà¹Ø²Ù×÷µÄ·½·¨
+//ç±»Path
+//åŒ…å«è¾“å…¥æ–‡æœ¬ä¿¡æ¯åçš„å®ç°ç›¸å…³æ“ä½œçš„æ–¹æ³•
 public class Path {
 
-	// »ñµÃÍ¼g,¶ÔÓ¦ÁĞ±ílÖĞ,´Óstartµ½endµÄ×î¶ÌÂ·¾¶,²¢ÔÚaÖĞ·µ»ØÇ°¼ÌµØµã
-	// ·½·¨·µ»Ø×î¶ÌÂ·¾¶³¤¶È
+	// è·å¾—å›¾g,å¯¹åº”åˆ—è¡¨lä¸­,ä»startåˆ°endçš„æœ€çŸ­è·¯å¾„,å¹¶åœ¨aä¸­è¿”å›å‰ç»§åœ°ç‚¹
+	// æ–¹æ³•è¿”å›æœ€çŸ­è·¯å¾„é•¿åº¦
 	public double getPath(String start, String end, ArrayList<Place> a,
 			Graph g, List l) {
 
 		int s = 0, e = 0;
 
 		try {
-			if (l.contains(start))// ÈôÍ¼ÖĞ²»´æÔÚµØµãstart,Å×³öÒì³£
+			if (l.contains(start))// è‹¥å›¾ä¸­ä¸å­˜åœ¨åœ°ç‚¹start,æŠ›å‡ºå¼‚å¸¸
 				s = l.indexOf(start);
 			else
 				throw new Exception();
 		} catch (Exception x) {
-			JOptionPane.showMessageDialog(null, "ÆğÊ¼µØµã²»´æÔÚ", "error",
+			JOptionPane.showMessageDialog(null, "èµ·å§‹åœ°ç‚¹ä¸å­˜åœ¨", "error",
 					JOptionPane.ERROR_MESSAGE);
 			return 0;
 		}
 
 		try {
-			if (l.contains(end))// ÈôÍ¼ÖĞ²»´æÔÚµØµãend,Å×³öÒì³£
+			if (l.contains(end))// è‹¥å›¾ä¸­ä¸å­˜åœ¨åœ°ç‚¹end,æŠ›å‡ºå¼‚å¸¸
 				e = l.indexOf(end);
 			else
 				throw new Exception();
 		} catch (Exception x) {
-			JOptionPane.showMessageDialog(null, "ÖÕÖ¹µØµã²»´æÔÚ", "error",
+			JOptionPane.showMessageDialog(null, "ç»ˆæ­¢åœ°ç‚¹ä¸å­˜åœ¨", "error",
 					JOptionPane.ERROR_MESSAGE);
 			return 0;
 		}
@@ -40,14 +40,14 @@ public class Path {
 		double[] d = new double[g.Vertices() + 1];
 		int[] p = new int[g.Vertices() + 1];
 
-		g.ShortestPaths(s, d, p);// »ñµÃ¶¥µãsµ½ÆäËü¶¥µãµÄ×î¶ÌÂ·¾¶
+		g.ShortestPaths(s, d, p);// è·å¾—é¡¶ç‚¹såˆ°å…¶å®ƒé¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
 
 		int i = e;
-		if (d[e] == Double.MAX_VALUE)// Èô²»´æÔÚstartµ½endµÄÂ·¾¶,·µ»Ø0;
+		if (d[e] == Double.MAX_VALUE)// è‹¥ä¸å­˜åœ¨startåˆ°endçš„è·¯å¾„,è¿”å›0;
 			return 0;
 
 		while (i != s) {
-			a.add(0, l.get(i));// ÔÙÁĞ±íaÖĞÒÀ´Î²åÈëÇ°¼Ì¶¥µã
+			a.add(0, l.get(i));// å†åˆ—è¡¨aä¸­ä¾æ¬¡æ’å…¥å‰ç»§é¡¶ç‚¹
 			i = p[i];
 
 		}
@@ -56,64 +56,64 @@ public class Path {
 		return d[e];
 	}
 
-	// ÔÚÍ¼gÖĞÌí¼ÓÃû³ÆÎªstr,Î»ÖÃÎªpµÄ¶¥µã
+	// åœ¨å›¾gä¸­æ·»åŠ åç§°ä¸ºstr,ä½ç½®ä¸ºpçš„é¡¶ç‚¹
 	public void add(String str, Graph g, List l, Point p) {
-		l.add(l.size(), new Place(str, p));// ÔÚµØµãÁĞ±íÖĞ×·¼ÓĞÂµØµã
-		g.addPoint();// ÔÚÍ¼ÖĞÌí¼ÓĞÂ¶¥µã
+		l.add(l.size(), new Place(str, p));// åœ¨åœ°ç‚¹åˆ—è¡¨ä¸­è¿½åŠ æ–°åœ°ç‚¹
+		g.addPoint();// åœ¨å›¾ä¸­æ·»åŠ æ–°é¡¶ç‚¹
 	}
 
-	// ÔÚÍ¼gÖĞÌí¼Ó´Óstartµ½endµÄÂ·¾¶,Â·¾¶³¤¶ÈÎªw
+	// åœ¨å›¾gä¸­æ·»åŠ ä»startåˆ°endçš„è·¯å¾„,è·¯å¾„é•¿åº¦ä¸ºw
 	public void addPath(String start, String end, double w, Graph g, List l) {
 		int s = 0, e = 0;
 		if (l.contains(start))
 			s = l.indexOf(start);
 		else
-			// Èôstart²»ÊÇÍ¼ÖĞµØµã,½áÊø·½·¨
+			// è‹¥startä¸æ˜¯å›¾ä¸­åœ°ç‚¹,ç»“æŸæ–¹æ³•
 			return;
 
 		if (l.contains(end))
 			e = l.indexOf(end);
 		else
-			// Èôend²»ÊÇÍ¼ÖĞµØµã,½áÊø·½·¨
+			// è‹¥endä¸æ˜¯å›¾ä¸­åœ°ç‚¹,ç»“æŸæ–¹æ³•
 			return;
 
-		if (g.exsit(s, e))// ÈôÍ¼ÖĞÒÑ´æÔÚ¸ÃÂ·¾¶,ÔòÌí¼ÓÊ§°Ü,½áÊø·½·¨
+		if (g.exsit(s, e))// è‹¥å›¾ä¸­å·²å­˜åœ¨è¯¥è·¯å¾„,åˆ™æ·»åŠ å¤±è´¥,ç»“æŸæ–¹æ³•
 			return;
 
 		g.add(s, e, w);
 	}
 	
-	// ÔÚÍ¼gÖĞÌí¼Ó´Óstartµ½endµÄÂ·¾¶,Â·¾¶³¤¶ÈÎªw
+	// åœ¨å›¾gä¸­æ·»åŠ ä»startåˆ°endçš„è·¯å¾„,è·¯å¾„é•¿åº¦ä¸ºw
 	public void addPath(Point start, Point end, double w, Graph g, List l) {
 		int s = 0, e = 0;
 		if (l.contains(start))
 			s = l.indexOf(start);
 		else
-			// Èôstart²»ÊÇÍ¼ÖĞµØµã,½áÊø·½·¨
+			// è‹¥startä¸æ˜¯å›¾ä¸­åœ°ç‚¹,ç»“æŸæ–¹æ³•
 			return;
 
 		if (l.contains(end))
 			e = l.indexOf(end);
 		else
-			// Èôend²»ÊÇÍ¼ÖĞµØµã,½áÊø·½·¨
+			// è‹¥endä¸æ˜¯å›¾ä¸­åœ°ç‚¹,ç»“æŸæ–¹æ³•
 			return;
 
-		if (g.exsit(s, e))// ÈôÍ¼ÖĞÒÑ´æÔÚ¸ÃÂ·¾¶,ÔòÌí¼ÓÊ§°Ü,½áÊø·½·¨
+		if (g.exsit(s, e))// è‹¥å›¾ä¸­å·²å­˜åœ¨è¯¥è·¯å¾„,åˆ™æ·»åŠ å¤±è´¥,ç»“æŸæ–¹æ³•
 			return;
 
 		g.add(s, e, w);
 	}
 
-	// ÔÚÍ¼gÖĞÉ¾³ıÃû³ÆÎªstrµÄµØµã
+	// åœ¨å›¾gä¸­åˆ é™¤åç§°ä¸ºstrçš„åœ°ç‚¹
 	public void delete(String str, Graph g, List l) {
 		g.deletePoint(l.indexOf(str));
 		l.remove(str);
 	}
 
-	// ÔÚÍ¼gÖĞÉ¾³ı´Óstartµ½endµÄÂ·¾¶
+	// åœ¨å›¾gä¸­åˆ é™¤ä»startåˆ°endçš„è·¯å¾„
 	public void deletePath(String start, String end, Graph g, List l) {
 		int s = 0, e = 0;
-		try {// ÈôÍ¼ÖĞ²»´æÔÚµØµãstart»òend,É¾³ıÊ§°Ü,Å×³öÒì³£
+		try {// è‹¥å›¾ä¸­ä¸å­˜åœ¨åœ°ç‚¹startæˆ–end,åˆ é™¤å¤±è´¥,æŠ›å‡ºå¼‚å¸¸
 			if (l.contains(start))
 				s = l.indexOf(start);
 			else
@@ -126,19 +126,19 @@ public class Path {
 			if (g.exsit(s, e) == false)
 				throw new Exception();
 		} catch (Exception x) {
-			JOptionPane.showMessageDialog(null, "ÄúËùÒªÉ¾³ıµÄÂ·Ïß²»´æÔÚ£¬ÇëÖØĞÂÊäÈë", "error",
+			JOptionPane.showMessageDialog(null, "æ‚¨æ‰€è¦åˆ é™¤çš„è·¯çº¿ä¸å­˜åœ¨ï¼Œè¯·é‡æ–°è¾“å…¥", "error",
 					JOptionPane.ERROR_MESSAGE);
 		}
 
-		g.delete(s, e);// É¾³ısºÍeÖ®¼äµÄÂ·¾¶
+		g.delete(s, e);// åˆ é™¤så’Œeä¹‹é—´çš„è·¯å¾„
 	}
 
-	// ½«Í¼gÖĞËùÓĞÓëµØµãstr´æÔÚÂ·¾¶µÄ¶¥µãÎ»ÖÃ,·µ»Øµ½aÖĞ
+	// å°†å›¾gä¸­æ‰€æœ‰ä¸åœ°ç‚¹strå­˜åœ¨è·¯å¾„çš„é¡¶ç‚¹ä½ç½®,è¿”å›åˆ°aä¸­
 	public void getLine(String str, ArrayList<Point> a, Graph g, List l) {
 
 		ArrayList<Integer> b = new ArrayList<Integer>();
-		g.getLine(l.indexOf(str), b);// »ñµÃÒªµÄ¶¥µãË÷Òı
+		g.getLine(l.indexOf(str), b);// è·å¾—è¦çš„é¡¶ç‚¹ç´¢å¼•
 		for (int i = 0; i < b.size(); i++)
-			a.add(l.getPoint(b.get(i).intValue()));// ½«¶¨¶¨Î»ÖÃÌí¼Óµ½aÖĞ
+			a.add(l.getPoint(b.get(i).intValue()));// å°†å®šå®šä½ç½®æ·»åŠ åˆ°aä¸­
 	}
 }

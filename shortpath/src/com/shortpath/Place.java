@@ -2,25 +2,25 @@ package com.shortpath;
 
 import java.awt.Point;
 
-//ÀàPlace
-//´æ´¢Ä³¸öµØµãµÄÃû³Æ(String)¼°¸ÃµØµãÔÚµØÍ¼ÖĞµÄÎ»ÖÃ(Point)
+//ç±»Place
+//å­˜å‚¨æŸä¸ªåœ°ç‚¹çš„åç§°(String)åŠè¯¥åœ°ç‚¹åœ¨åœ°å›¾ä¸­çš„ä½ç½®(Point)
 public class Place {
-	private String n;// Ãû³Æ
-	private Point p;// Î»ÖÃ
+	private String n;// åç§°
+	private Point p;// ä½ç½®
 
-	// ¹¹Ôìº¯Êı
-	// ²ÎÊınÎª¸ÃµØµãÃû³Æ,pÎª¸ÃµØµãÎ»ÖÃ
+	// æ„é€ å‡½æ•°
+	// å‚æ•°nä¸ºè¯¥åœ°ç‚¹åç§°,pä¸ºè¯¥åœ°ç‚¹ä½ç½®
 	public Place(String n, Point p) {
 		this.n = n;
 		this.p = p;
 	}
 
-	// µÃµ½Ä³µØµãÃû³Æ
+	// å¾—åˆ°æŸåœ°ç‚¹åç§°
 	public String getName() {
 		return n;
 	}
 
-	// µÃµ½Ä³µØµãÎ»ÖÃ
+	// å¾—åˆ°æŸåœ°ç‚¹ä½ç½®
 	public Point getPoint() {
 		return p;
 	}
