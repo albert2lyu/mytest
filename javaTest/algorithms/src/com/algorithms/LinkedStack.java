@@ -7,10 +7,44 @@ public class LinkedStack<T> implements Iterable<T> {
 	private class Node{
 		T self;
 		Node next;
+		
+		Node(){
+			
+		}
+		
+		//通过递归或不递归构造函数来复制栈中节点
+		Node(Node x, boolean isRecursion){
+			if(true == isRecursion){
+				self = x.self;
+				if(x.next != null){
+					next = new Node(x.next, isRecursion);
+				}
+			} else {
+				self = x.self;
+				next = x.next;
+			}
+		}
 	}
 	
 	private Node first;
 	private int N = 0;
+	
+	public LinkedStack() {
+		
+	}
+	//通过递归或不递归构造函数来复制栈
+	public LinkedStack(LinkedStack<T> stack, boolean isRecursion){
+		if(true == isRecursion){
+			first = new Node(stack.first, isRecursion);
+		} else {
+			if(stack.first != null){
+				first = new Node(stack.first, isRecursion);
+				for(Node node = first; node.next != null; node = node.next){
+					node.next = new Node(node.next, isRecursion);
+				}
+			}
+		}
+	}
 	
 	public boolean isEmpty(){
 		return N == 0;//或first == null
