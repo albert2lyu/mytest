@@ -30,6 +30,10 @@ public class ArrayStack<T> implements Iterable<T>{
 	}
 	
 	public T pop(){
+		if(N == 0){
+			//throw new emptyexception;
+			return null;
+		}
 		T t = a[--N];
 		a[N] = null;
 		if(N > 0 && N == a.length/4)
@@ -38,6 +42,7 @@ public class ArrayStack<T> implements Iterable<T>{
 	}
 	
 	public T peek(){
+		if(N == 0) return null;
 		return a[N-1];
 	}
 	
